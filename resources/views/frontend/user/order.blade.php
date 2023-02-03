@@ -33,12 +33,13 @@
                                 <table class="table table-bordered mb-0">
                                     <thead>
                                         <tr>
-                                            <th scope="col">User Id</th>
-                                            <th scope="col">Order Id</th>
+                                            <th scope="col">Serial No</th>
                                             <th scope="col">Order No</th>
+                                            <th scope="col">Order Date</th>
                                             <th scope="col">Order Status</th>
+                                            <th scope="col">Payment Status</th>
                                             <th scope="col">Total</th>
-                                            <th scope="col">Actions</th>
+                                           
                                         </tr>
                                     </thead>
                                    @foreach ($orders as $order)
@@ -46,10 +47,11 @@
                                    
                                     <tbody>
                                         <tr>
-                                            <td>{{$order->user_id}}</td>
                                             <td>{{$order->id}}</td>
                                             <td>{{$order->order_number}}</td>
+                                            <td>{{$order->created_at}}</td>
                                             <td>{{$order->condition}}</td>
+                                            <td>{{$order->payment_status}}</td>
                                             <td>{{number_format($order->total_amount,2)}}</td>
                                             
 

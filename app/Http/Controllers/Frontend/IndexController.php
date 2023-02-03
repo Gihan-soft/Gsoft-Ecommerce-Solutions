@@ -367,8 +367,8 @@ class IndexController extends Controller
         if(Auth::attempt(['email' =>$request->email, 'password' =>$request->password,'status'=>'active']))
 
         {   
-             Session::put('user',$request->email);
-              $adminDetails = User::where('email',Session::get('user'))->first();
+            Session::put('user',$request->email);
+            $adminDetails = User::where('email',Session::get('user'))->first();
             $adminDetails = json_decode(json_encode($adminDetails),true);
             Session::put('adminDetails',$adminDetails);
         //    Session::put('user',$request->email);
@@ -443,9 +443,9 @@ class IndexController extends Controller
     public function userOrder()
     {   
         $user=Auth::user();
-        $admin=Session::get('adminDetails')['id'];
+        $user_auth=Session::get('adminDetails')['id'];
        // print_r(Session::get('adminDetails')); die;
-        $orders=Order::where('user_id',$admin)->get();
+        $orders=Order::where('user_id',$user_auth)->get();
         return view('frontend.user.order',compact(['user','orders']));
     }
 

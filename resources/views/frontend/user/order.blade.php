@@ -33,90 +33,30 @@
                                 <table class="table table-bordered mb-0">
                                     <thead>
                                         <tr>
-                                            <th scope="col">Order</th>
-                                            <th scope="col">Date</th>
-                                            <th scope="col">Status</th>
+                                            <th scope="col">User Id</th>
+                                            <th scope="col">Order Id</th>
+                                            <th scope="col">Order No</th>
+                                            <th scope="col">Order Status</th>
                                             <th scope="col">Total</th>
                                             <th scope="col">Actions</th>
                                         </tr>
                                     </thead>
+                                   @foreach ($orders as $order)
+                                       
+                                   
                                     <tbody>
                                         <tr>
-                                            <th scope="row">
-                                                #2257
-                                            </th>
-                                            <td>
-                                                30 August 2019
-                                            </td>
-                                            <td>
-                                                Pending
-                                            </td>
-                                            <td>$9</td>
-                                            <td>
-                                                <a href="#" class="btn btn-primary btn-sm m-2">Pay</a>
-                                            </td>
+                                            <td>{{$order->user_id}}</td>
+                                            <td>{{$order->id}}</td>
+                                            <td>{{$order->order_number}}</td>
+                                            <td>{{$order->condition}}</td>
+                                            <td>{{number_format($order->total_amount,2)}}</td>
+                                            
+
                                         </tr>
-                                        <tr>
-                                            <th scope="row">
-                                                #2256
-                                            </th>
-                                            <td>
-                                                28 August 2019
-                                            </td>
-                                            <td>
-                                                Completed
-                                            </td>
-                                            <td>$11</td>
-                                            <td>
-                                                <a href="#" class="btn btn-primary btn-sm m-2">View</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">
-                                                #2255
-                                            </th>
-                                            <td>
-                                                27 August 2019
-                                            </td>
-                                            <td>
-                                                Completed
-                                            </td>
-                                            <td>$6</td>
-                                            <td>
-                                                <a href="#" class="btn btn-primary btn-sm m-2">View</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">
-                                                #2254
-                                            </th>
-                                            <td>
-                                                25 August 2019
-                                            </td>
-                                            <td>
-                                                Completed
-                                            </td>
-                                            <td>$17</td>
-                                            <td>
-                                                <a href="#" class="btn btn-primary btn-sm m-2">View</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">
-                                                #2253
-                                            </th>
-                                            <td>
-                                                22 August 2019
-                                            </td>
-                                            <td>
-                                                Cancelled
-                                            </td>
-                                            <td>$13</td>
-                                            <td>
-                                                <a href="#" class="btn btn-primary btn-sm m-2">View</a>
-                                            </td>
-                                        </tr>
+
                                     </tbody>
+                                    @endforeach
                                 </table>
                             </div>
                         </div>

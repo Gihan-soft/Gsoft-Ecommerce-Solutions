@@ -14,6 +14,7 @@ use App\Models\Banner;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Brand;
+use App\Models\Order;
 use App\Models\ProductOrder;
 use App\Models\AboutUs;
 use Illuminate\Support\Facades\Mail;
@@ -438,7 +439,9 @@ class IndexController extends Controller
     public function userOrder()
     {   
         $user=Auth::user();
-        return view('frontend.user.order',compact('user'));
+        
+        $orders=Order::get();
+        return view('frontend.user.order',compact(['user','orders']));
     }
 
 

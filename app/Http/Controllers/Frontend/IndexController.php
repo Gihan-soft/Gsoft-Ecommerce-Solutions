@@ -366,8 +366,12 @@ class IndexController extends Controller
 
         if(Auth::attempt(['email' =>$request->email, 'password' =>$request->password,'status'=>'active']))
 
-        {
-           Session::put('user',$request->email);
+        {   
+             Session::put('user',$request->email);
+              $adminDetails = User::where('email',Session::get('user'))->first();
+            $adminDetails = json_decode(json_encode($adminDetails),true);
+            Session::put('adminDetails',$adminDetails);
+        //    Session::put('user',$request->email);
 
            if(Session::get('url.intended'))
            {
@@ -439,8 +443,9 @@ class IndexController extends Controller
     public function userOrder()
     {   
         $user=Auth::user();
-        
-        $orders=Order::get();
+        $admin=Session::get('adminDetails')['id'];
+       // print_r(Session::get('adminDetails')); die;
+        $orders=Order::where('user_id',$admin)->get();
         return view('frontend.user.order',compact(['user','orders']));
     }
 

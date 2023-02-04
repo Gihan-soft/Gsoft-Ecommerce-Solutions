@@ -33,24 +33,33 @@
                 <div class="col-lg-12 col-md-12 col-sm-12">
                     <div class="card">
                         <div class="body">
-                            <form action="{{route('banner.store')}}" method="POST">
+                            <form action="{{route('seller.store')}}" method="POST">
                                 @csrf
                             <div class="row clearfix">
                                 <div class="col-lg-12 col-md-12">
 
                                     <div class="form-group">
-                                        <label for="">Title<span class="text-danger">*</span></label> 
-                                        <input type="text" class="form-control" placeholder="Title" name="title" value="{{old('title')}}">
+                                        <label for=""> Full Name<span class="text-danger">*</span></label> 
+                                        <input type="text" class="form-control" placeholder="Title" name="full_name" value="{{old('full_name')}}">
                                     </div>
                                 </div>
-
+                      
                                     <div class="col-lg-12 col-md-12">
                                     <div class="form-group">
-                                        <label for="">URL<span class="text-danger">*</span></label> 
-                                        <input type="text" class="form-control" placeholder="Slug" name="slug" value="{{old('slug')}}">
+                                        <label for="">Email<span class="text-danger">*</span></label> 
+                                        <input type="email" class="form-control" placeholder="email" name="email" value="{{old('email')}}">
                                     </div>
+                              
+                                    </div>
+                                    <div class="col-lg-12 col-md-12">
 
+                                    <div class="form-group">
+                                        <label for="">Password<span class="text-danger">*</span></label> 
+                                        <input type="password" class="form-control" placeholder="password" name="password" value="{{old('password')}}">
+                                    </div>
                                 </div>
+
+                                
                                 <div class="col-lg-12 col-md-12">
                                     <div class="form-group">
                                         <label for="">Photo</label> 
@@ -67,19 +76,27 @@
  
                                     </div>
                                 </div>
+                                
+                                <div class="col-lg-12 col-md-12">
+                                    <div class="form-group">
+                                        <label for="">Contact No<span class="text-danger">*</span></label> 
+                                        <input type="text" class="form-control" placeholder="phone" name="phone" value="{{old('phone')}}">
+                                    </div>
+
+                                </div>
 
                                  <div class="col-lg-12 col-md-12">
                                     <div class="form-group">
-                                        <label for="">Description</label> 
-                                        <textarea id="description" class="form-control" placeholder="Write some text" name="description">{{old('description')}}</textarea>
+                                        <label for="">Address</label> 
+                                        <textarea id="address" class="form-control" placeholder="Write some text" name="address">{{old('address')}}</textarea>
                                     </div>
                                 </div>
 
                                 <div class="col-lg-12  col-sm-12">  
-                                    <label for="">Condition</label>                              
-                                    <select name="condition" class="form-control show-tick">
-                                        <option value="banner" {{old('condition')=='banner' ? 'selected' : ''}}>Banner</option>
-                                        <option value="promo" {{old('condition')=='promo' ? 'selected' : ''}}>Promote</option>
+                                    <label for="">Is Verified</label>                              
+                                    <select name="is_verfied" class="form-control show-tick">
+                                        <option value="1" {{old('is_verfied')=='1' ? 'selected' : ''}}>Verify</option>
+                                        <option value="0" {{old('is_verfied')=='0' ? 'selected' : ''}}>Not Verify</option>
                                     </select>
                                 </div>
 

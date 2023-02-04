@@ -52,39 +52,15 @@
                             
                             <li><a href="{{route('order.index')}}" class="has-arrow"><i class="icon-layers"></i><span>Order Management</span></li></a>
                             
-                            <li><a href="javascript:void(0);" class="has-arrow"><i class="fas fa-sitemap"></i><span>Post Category</span> </a>
-                                <ul>
-                                    <li><a href="departments.html">All Departments</a></li>
-                                    <li><a href="add-departments.html">Add Departments</a></li>
-                                </ul>
-                            </li>
+                            
 
                             <li><a href="javascript:void(0);" class="has-arrow"><i class="icon-users"></i><span>Seller Management</span> </a>
                                 <ul>
                                     <li><a href="{{route('seller.index')}}">All Sellers</a></li>
-                                    <li><a href="add-departments.html">Add Departments</a></li>
+                                    <li><a href="{{route('seller.create')}}">Add Seller</a></li>
                                 </ul>
                             </li>
 
-                            <li><a href="javascript:void(0);" class="has-arrow"><i class="icon-tag"></i><span>Post Tag</span> </a>
-                                <ul>
-                                    <li><a href="departments.html">All Departments</a></li>
-                                    <li><a href="add-departments.html">Add Departments</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="javascript:void(0);" class="has-arrow"><i class="fas fa-newspaper"></i><span>Post Management</span> </a>
-                                <ul>
-                                    <li><a href="departments.html">All Departments</a></li>
-                                    <li><a href="add-departments.html">Add Departments</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="javascript:void(0);" class="has-arrow"><i class="icon-star"></i><span>Review Management</span> </a>
-                                <ul>
-                                    <li><a href="departments.html">All Departments</a></li>
-                                    <li><a href="add-departments.html">Add Departments</a></li>
-                                </ul>
-                            </li>
-                            
                              <li><a href="javascript:void(0);" class="has-arrow"><i class="icon-check"></i><span>Coupon Management</span> </a>
                                 <ul>
                                     <li><a href="{{route('coupon.index')}}">All Coupons</a></li>
@@ -97,12 +73,14 @@
                                     <li><a href="{{route('user.create')}}">Add Users</a></li>
                                 </ul>
                             </li>
-                             <li><a href="javascript:void(0);" class="has-arrow"><i class="icon icon-bubbles"></i><span>Comment Management</span> </a>
+
+                             <li><a href="javascript:void(0);" class="has-arrow"><i class="icon-people"></i><span>Reports</span> </a>
                                 <ul>
-                                    <li><a href="departments.html">All Departments</a></li>
-                                    <li><a href="add-departments.html">Add Departments</a></li>
+                                    <li><a href="{{route('report.index')}}">Product List</a></li>
+                                    <li><a href="{{route('report.orders')}}">Orders</a></li>
                                 </ul>
                             </li>
+                             
                             <li><a href="{{route('settings')}}"><i class="icon-settings"></i>Settings</li>
                         </ul>
                     </nav>

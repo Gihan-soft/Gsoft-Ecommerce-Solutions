@@ -15,6 +15,7 @@ use App\Http\Controllers\CouponController;
 use App\Http\Controllers\ShippingController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\SettingsController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Auth\Admin\LoginController;
@@ -193,6 +194,13 @@ Route::put('settings',[SettingsController::class,'settingsUpdate'])->name('setti
 Route::resource('/seller',SellersController::class);
 Route::post('seller-status',[SellersController::class,'sellerStatus'])->name('seller.status');
 Route::post('seller-verified',[SellersController::class,'sellerVerified'])->name('seller.verified');
+
+//Reports section 
+Route::resource('/report',ReportController::class);
+
+
+
+
 });
 
 

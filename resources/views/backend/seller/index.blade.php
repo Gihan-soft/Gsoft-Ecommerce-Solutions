@@ -89,7 +89,6 @@
                                             <th>Serial No.</th>
                                             <th>Photo</th>
                                             <th>Full Name</th>
-                                            <th>Username</th>
                                             <th>Email</th>
                                             <th>Address</th>
                                             <th>Phone</th>
@@ -104,7 +103,6 @@
                                      <td>{{$loop->iteration}}</td>
                                      <td><img src="{{$item->photo ==null ? Helper::userDefaultImage() : asset($item->photo)}}"alt="Profile" style="max-height:90px;max-width:90px;"></td>
                                      <td>{{$item->full_name}}</td>
-                                     <td>{{$item->username}}</td>
                                      <td>{{$item->email}}</td>
                                      <td>{{$item->address}}</td>
                                      <td>{{$item->phone}}</td>
@@ -117,6 +115,7 @@
                                      </td>
 
                                      <td>
+                                        <a href="javascript:void(0);" data-toggle="modal" data-target="#userID{{$item->id}}" class="float-left btn btn-sm btn-outline-secondary" data-toggle="tooltip" title="view" data-placement="bottom"><i class="fas fa-eye"></i></a>
                                         <a href="{{route('seller.edit',$item->id)}}" class="float-left btn btn-sm btn-outline-warning" data-toggle="tooltip" title="edit" data-placement="bottom"><i class="fas fa-edit"></i></a>
                                         <form class="float-left ml-1" action="{{route('seller.destroy',$item->id)}}" method="POST">
                                             @csrf
@@ -125,6 +124,63 @@
                                     
                                         </form>
                                           </td>
+                                           </td>
+                                   <div class="modal fade" id="userID{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="documesellernt">
+    @php
+     $seller=\App\Models\Seller::where('id',$item->id)->first();
+
+    @endphp
+    <div class="modal-content">
+        <div class="text-center">
+            <img src="{{$seller->photo}}" style="border-radius:50%;margin:2% 0;height:60px;width:60px;"alt="">
+        </div>
+      <div class="modal-header">
+        <h5 class="modal-title text-center" id="exampleModalLabel">{{\Illuminate\Support\Str::upper($seller->full_name)}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+        
+        
+        <strong>Seller name:</strong>
+        <p>{{$seller->full_name}}</p>
+        
+
+
+        <div class="row">
+           <div class="col-md-6">
+         <strong>Email:</strong>
+        <p>{{$seller->email}}</p></div>
+           
+
+       
+         <div class="col-md-6">
+        <strong>Contact No:</strong>
+        <p>{{$seller->phone}}</p></div>
+        </div>
+        
+        <div class="row">
+       <div class="col-md-6">
+        <strong>Address:</strong>
+        <p>{{$seller->address}}</p></div>
+
+         </div>
+
+<div class="row">
+        <div class="col-md-6">
+        <strong>Status:</strong>
+        <p class="badge badge-warning">{{$seller->status}}</p></div>
+
+</div>
+
+
+     
+    </div>
+  </div>
+</div>
                                     
 
 

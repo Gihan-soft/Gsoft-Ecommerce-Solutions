@@ -55,7 +55,7 @@
                                      </td>
 
                                      <td>
-                                         <a href="javascript:void(0);" data-toggle="modal" data-target="#userID{{$item->id}}" class="float-left btn btn-sm btn-outline-secondary" data-toggle="tooltip" title="view" data-placement="bottom"><i class="fas fa-eye"></i></a>
+                                        <a href="javascript:void(0);" data-toggle="modal" data-target="#userID{{$item->id}}" class="float-left btn btn-sm btn-outline-secondary" data-toggle="tooltip" title="view" data-placement="bottom"><i class="fas fa-eye"></i></a>
                                         <a href="{{route('user.edit',$item->id)}}" class="float-left btn btn-sm btn-outline-warning" data-toggle="tooltip" title="edit" data-placement="bottom"><i class="fas fa-edit"></i></a>
                                         <form class="float-left ml-1" action="{{route('user.destroy',$item->id)}}" method="POST">
                                             @csrf

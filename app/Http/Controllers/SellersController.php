@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Seller;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\SellerAuth;
 
 class SellersController extends Controller
 {
@@ -60,7 +62,7 @@ class SellersController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.seller.create');
     }
 
     /**
@@ -71,7 +73,25 @@ class SellersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'full_name'=> 'required|string',
+            'address'=> 'nullable|string',
+            'email' => 'email|required|unique:sellers,email',
+            'password' => 'required|min:3',
+            'photo'=>'required',
+            'is_verified'=>'nullable|in:1,0',
+            'status'=>'nullable|in:active,inactive',
+            
+
+        ]);
+        $data= $request->all();
+        $status=Seller::create($data);
+        if($status){
+            return redirect()->route('seller.index')->with('success','Seller successfully added');
+        }
+        else{
+            return back()->with('error','Something went wrong!');
+        }
     }
 
     /**
@@ -93,7 +113,15 @@ class SellersController extends Controller
      */
     public function edit($id)
     {
-        //
+       $seller=Seller::find($id);
+       if($seller)
+       {
+        return view('backend.seller.edit',compact('seller'));
+       }
+       else
+       {
+        return back()->with('error','Data not found');
+       }
     }
 
     /**
@@ -105,7 +133,32 @@ class SellersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user=Seller::find($id);
+        if($user){
+            $this->validate($request,[
+            'full_name'=>'string|required',
+            'username'=>'string|nullable',
+            'email'=>'email|required|exists:sellers,email',
+            'phone'=>'string|nullable',
+            'photo'=>'required',
+            'address'=>'string|nullable',
+            'is_verified'=>'nullable|in:1,0',
+            'status'=>'required|in:active,inactive'
+            ]);
+
+            $data=$request->all();
+
+            $status=$user->fill($data)->save();
+            if($status){
+                return redirect()->route('seller.index')->with('success','seller successfully updated');
+            }
+            else{
+                return back()->with('error','Something went wrong!');
+            }
+        }
+        else{
+            return back()->with('error','User not found');
+        }
     }
 
     /**
@@ -116,6 +169,24 @@ class SellersController extends Controller
      */
     public function destroy($id)
     {
-        //
+       $seller=Seller::find($id);
+       if($seller)
+       {
+        $status= $seller->delete();
+           if($status)
+           {
+              return redirect()->route('seller.index')->with('success','Seller successfully deleted');
+           }
+
+           else
+           {
+             return back()->with('error','Something went wrong');
+           }
+
+       }
+       else
+       {
+        return back()->with('error','Data not found');
+       }
     }
 }
